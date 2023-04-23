@@ -1,0 +1,4 @@
+# Links created by nix to build products
+result
+result-*
+repl-result-*
