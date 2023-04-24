@@ -5,4 +5,5 @@ repl-result-*
 
 # nixago: ignore-linked-files
 .editorconfig
+lefthook.yml
 treefmt.toml

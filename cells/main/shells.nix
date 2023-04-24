@@ -37,6 +37,7 @@ in
 
       nixago = [
         cell.pebbles.editorconfig
+        cell.pebbles.lefthook
         cell.pebbles.treefmt
       ];
     };

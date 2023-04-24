@@ -17,6 +17,23 @@ in {
     };
   };
 
+  lefthook = lib.cfg.lefthook {
+    data = {
+      pre-commit = {
+        parallel = true;
+        commands = {
+          "check-format" = {
+            files = "git diff --name-only HEAD";
+            run = "treefmt --fail-on-change -- {files}";
+          };
+          "check-reuse" = {
+            run = "reuse lint";
+          };
+        };
+      };
+    };
+  };
+
   treefmt = lib.cfg.treefmt {
     data.formatter.nix = {
       command = "alejandra";
