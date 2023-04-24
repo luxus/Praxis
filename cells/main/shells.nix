@@ -1,7 +1,6 @@
 # SPDX-FileCopyrightText: 2023 Mikaela Allan
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
-
 {
   inputs,
   cell,
@@ -34,6 +33,11 @@ in
           package = nixpkgs.reuse;
           category = "legal";
         }
+      ];
+
+      nixago = [
+        cell.pebbles.editorconfig
+        cell.pebbles.treefmt
       ];
     };
   }

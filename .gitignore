@@ -2,3 +2,7 @@
 result
 result-*
 repl-result-*
+
+# nixago: ignore-linked-files
+.editorconfig
+treefmt.toml

@@ -1,7 +1,6 @@
 # SPDX-FileCopyrightText: 2023 Mikaela Allan
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
-
 {
   description = "Personal configurations and operations";
 
@@ -18,9 +17,10 @@
       inherit inputs;
       cellsFrom = ./cells;
       cellBlocks = let
-        inherit (std.blockTypes) devshells;
+        inherit (std.blockTypes) devshells nixago;
       in [
         (devshells "shells")
+        (nixago "pebbles")
       ];
     }
     {
