@@ -1,24 +1,39 @@
+# SPDX-FileCopyrightText: 2023 Mikaela Allan
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 {
   inputs,
-  cell
-}:
-let
+  cell,
+}: let
   inherit (inputs) nixpkgs;
   inherit (inputs.std) std;
   inherit (inputs.std.lib.dev) mkShell;
   inherit (nixpkgs.lib.attrsets) mapAttrs;
   inherit (nixpkgs.lib.trivial) const;
-in mapAttrs (const mkShell) {
-  default = { config, lib, ... }: {
-    imports = [
-      std.devshellProfiles.default
-    ];
+in
+  mapAttrs (const mkShell) {
+    default = {
+      config,
+      lib,
+      ...
+    }: {
+      imports = [
+        std.devshellProfiles.default
+      ];
 
-    name = "Praxis";
+      name = "Praxis";
 
-    devshell = {
-      name = lib.mkForce "praxis-shell";
-      meta.description = "Main development shell for the Praxis project";
+      devshell = {
+        name = lib.mkForce "praxis-shell";
+        meta.description = "Main development shell for the Praxis project";
+      };
+
+      commands = [
+        {
+          package = nixpkgs.reuse;
+          category = "legal";
+        }
+      ];
     };
-  };
-}
+  }

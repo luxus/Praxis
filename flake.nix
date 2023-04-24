@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Mikaela Allan
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 {
   description = "Personal configurations and operations";
 
@@ -10,16 +14,16 @@
   };
 
   outputs = {std, ...} @ inputs:
-  std.growOn {
-    inherit inputs;
-    cellsFrom = ./cells;
-    cellBlocks = let
-      inherit (std.blockTypes) devshells;
-    in [
-      (devshells "shells")
-    ];
-  }
-  {
-    devShells = std.harvest inputs.self ["main" "shells"];
-  };
+    std.growOn {
+      inherit inputs;
+      cellsFrom = ./cells;
+      cellBlocks = let
+        inherit (std.blockTypes) devshells;
+      in [
+        (devshells "shells")
+      ];
+    }
+    {
+      devShells = std.harvest inputs.self ["main" "shells"];
+    };
 }
