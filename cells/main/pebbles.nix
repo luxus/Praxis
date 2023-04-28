@@ -29,9 +29,16 @@ in {
           "check-reuse" = {
             run = "reuse lint";
           };
+          "check-secrets" = {
+            run = "trufflehog --fail --no-update -- git file://\${PRJ_ROOT}";
+          };
         };
       };
     };
+
+    packages = [
+      inputs.nixpkgs.trufflehog
+    ];
   };
 
   treefmt = lib.cfg.treefmt {
