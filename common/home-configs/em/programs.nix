@@ -30,6 +30,10 @@
       "credential \"https://dev.azure.com\"".useHttpPath = true;
       init.defaultBranch = "master";
     };
+    signing = {
+      key = "65644699A895E2F4566851F3BC04913562575C81";
+      signByDefault = true;
+    };
     userName = "Mikaela Allan";
     userEmail = "me@mikaela.ca";
   };
