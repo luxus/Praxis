@@ -5,6 +5,12 @@
   inputs,
   cell,
 }: {
+  admin = {
+    users = [
+      "em"
+    ];
+  };
+
   hashedPasswords.em = "$6$cy9XYCSl7fE8W3Tr$F20vxCKh8VzacTM9f36WXj.u0A9/facrP0ODHzUOOJqDfYTlyWKSJjjhdl42i6IULbLRB0orOmcUEkY9Hb7.9/";
 
   sshPublicKeys = {
