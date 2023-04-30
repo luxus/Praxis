@@ -14,13 +14,11 @@
   ...
 }: {
   imports = [
-    inputs.impermanence.nixosModules.impermanence
-
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
-    inputs.nixvim.nixosModules.nixvim
+    inputs.cells.common.nixosModules.default
 
     ({config, ...}: {
       assertions = [
@@ -113,17 +111,10 @@
         };
       };
     })
-
-    {
-      programs.nixvim = inputs.cells.common.nixvimConfigurations.base;
-    }
   ];
 
   boot = {
-    loader = {
-      efi.efiSysMountPoint = "/esp";
-      systemd-boot.enable = true;
-    };
+    loader.systemd-boot.enable = true;
 
     initrd = {
       availableKernelModules = [
@@ -154,13 +145,7 @@
     pulseaudio.enable = true;
   };
 
-  home-manager = {
-    sharedModules = [
-      inputs.nixvim.homeManagerModules.nixvim
-    ];
-
-    users.em = builtins.removeAttrs cell.homeConfigurations."em@nexus" ["bee"];
-  };
+  home-manager.users.em = builtins.removeAttrs cell.homeConfigurations."em@nexus" ["bee"];
 
   networking = {
     hostName = "nexus";
@@ -185,11 +170,6 @@
     nameservers = [
       "192.168.103.2"
     ];
-  };
-
-  programs = {
-    nixvim.enable = true;
-    zsh.enable = true;
   };
 
   security.sudo.wheelNeedsPassword = false;
