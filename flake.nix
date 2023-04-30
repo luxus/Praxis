@@ -86,7 +86,7 @@
 
       cellBlocks = let
         inherit (std.blockTypes) data devshells functions nixago pkgs;
-        inherit (hive.blockTypes) darwinConfigurations homeConfigurations homeModules nixosConfigurations;
+        inherit (hive.blockTypes) darwinConfigurations darwinModules homeConfigurations homeModules nixosConfigurations nixosModules;
       in [
         (data "data")
         {
@@ -100,9 +100,11 @@
         (nixago "pebbles")
 
         darwinConfigurations
+        darwinModules
         homeConfigurations
         homeModules
         nixosConfigurations
+        nixosModules
       ];
 
       systems = with inputs.flake-utils.lib.system; [
