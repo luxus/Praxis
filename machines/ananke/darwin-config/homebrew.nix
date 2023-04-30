@@ -29,7 +29,6 @@
     "homebrew/portable-ruby"
     "homebrew/services"
     "microsoft/git"
-    "minio/stable"
     "osx-cross/arm"
     "osx-cross/avr"
     # "qmk/qmk"
@@ -70,7 +69,6 @@
     "sublime-text"
     "tigervnc-viewer"
     "transmission"
-    "vimr"
     "vlc"
     "wireshark"
   ];
