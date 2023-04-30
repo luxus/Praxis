@@ -9,8 +9,6 @@
   # Hive/Std/Paisano Arguments
   inputs,
   cell,
-  # Additional arguments added by machine cell laoder
-  machineData,
   ...
 }: let
   l = inputs.nixpkgs.lib // builtins;
