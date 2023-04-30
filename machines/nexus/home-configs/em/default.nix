@@ -14,6 +14,6 @@
   ...
 }: {
   imports = [
-    inputs.cells.common.homeConfigurations.em
+    inputs.cells.common.homeModules.em
   ];
 }

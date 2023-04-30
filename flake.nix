@@ -86,7 +86,7 @@
 
       cellBlocks = let
         inherit (std.blockTypes) data devshells functions nixago pkgs;
-        inherit (hive.blockTypes) darwinConfigurations homeConfigurations nixosConfigurations;
+        inherit (hive.blockTypes) darwinConfigurations homeConfigurations homeModules nixosConfigurations;
       in [
         (data "data")
         {
@@ -101,6 +101,7 @@
 
         darwinConfigurations
         homeConfigurations
+        homeModules
         nixosConfigurations
       ];
 

@@ -351,11 +351,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1682451355,
-        "narHash": "sha256-sLSiDkU9oNpcl1QEge0xVviD7N87iVdrwl7l9i+6mxQ=",
+        "lastModified": 1682788093,
+        "narHash": "sha256-kdHC7sPTU2EhypLo0glh/81rbPQKxljw/4Qp0YFPKHA=",
         "owner": "mklca",
         "repo": "nix-hive",
-        "rev": "e3acba4bacfde185becc20d1b2cbaac89dca6580",
+        "rev": "082e819756ce6aee041a236c2ec1dee0bb67229c",
         "type": "github"
       },
       "original": {

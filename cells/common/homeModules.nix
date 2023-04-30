@@ -5,11 +5,10 @@
   inputs,
   cell,
 }: let
-  inherit (inputs) haumea;
   l = inputs.nixpkgs.lib // builtins;
 in
   l.genAttrs ["em"] (homeName:
     inputs.hive.load {
       inherit cell inputs;
-      src = inputs.self + "/common/home-configs/${homeName}";
+      src = inputs.self + "/common/home-modules/${homeName}";
     })
