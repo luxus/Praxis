@@ -43,6 +43,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-generators = {
+      url = github:nix-community/nixos-generators;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = flake:nixos-hardware;
 
     nixpkgs.url = flake:nixpkgs;
@@ -124,5 +129,10 @@
       devShells = paisano.harvest inputs.self ["main" "shells"];
       homeConfigurations = collect' inputs.self "homeConfigurations";
       nixosConfigurations = collect' inputs.self "nixosConfigurations";
-    });
+    })
+    {
+      packages.x86_64-linux = {
+        inherit (inputs.self.x86_64-linux.nixos-installer.packages) nixos-x86_64-installer-iso;
+      };
+    };
 }
