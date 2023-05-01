@@ -21,16 +21,7 @@
     inputs.cells.common.nixosModules.default
 
     ({config, ...}: {
-      assertions = [
-        {
-          assertion = config.virtualisation.vmware.guest.enable;
-          message = "Storage configuration requires vmware guest services to be enabled.";
-        }
-      ];
-
       fileSystems = let
-        efiSysMountPoint = config.boot.loader.efi.efiSysMountPoint;
-
         commonBtrfsOptions = [
           "commit=300"
           "compress=zstd:3"
@@ -51,30 +42,6 @@
 
         systemFsSubvol = deviceFsSubvol "/dev/disk/by-partlabel/nexus-system-partition";
       in {
-        "/" = {
-          device = "none";
-          fsType = "tmpfs";
-          options = [
-            "size=2G"
-            "mode=755"
-          ];
-        };
-
-        "${efiSysMountPoint}" = {
-          device = "/dev/disk/by-partlabel/nexus-efi-partition";
-          fsType = "vfat";
-          options = [
-            "codepage=437"
-            "discard"
-            "dmask=0022"
-            "errors=remount-ro"
-            "fmask=0133"
-            "iocharset=iso8859-1"
-            "noatime"
-            "shortname=mixed"
-          ];
-        };
-
         "/home" = systemFsSubvol "home" {};
 
         "/host/Source" = {
