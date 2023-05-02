@@ -13,5 +13,9 @@
 }: {
   sharedModules = [
     inputs.nixvim.homeManagerModules.nixvim
+
+    ({lib, ...}: {
+      programs.nixvim.enable = lib.mkOverride 900 true;
+    })
   ];
 }

@@ -9,9 +9,15 @@
   # Hive/Std/Paisano Arguments
   inputs,
   cell,
-  # Additional arguments added by machine cell laoder
-  machineData,
   ...
 }: {
-  mutableUsers = false;
+  _imports = [
+    ({
+      lib,
+      pkgs,
+      ...
+    }: {
+      users.defaultUserShell = lib.mkOverride 900 pkgs.zsh;
+    })
+  ];
 }
