@@ -13,7 +13,6 @@
   machineData,
   ...
 }: {
-  inherit (inputs.cells.common.data.nix) registry;
   buildMachines = [
     {
       hostName = "ananke.local";
@@ -29,23 +28,16 @@
     }
   ];
 
-  daemonCPUSchedPolicy = "batch";
-
   distributedBuilds = true;
 
   extraOptions = ''
     !include /etc/nix/secrets.conf
-
-    extra-experimental-features = nix-command flakes
 
     keep-outputs = true
     keep-derivations = true
   '';
 
   settings = {
-    inherit (inputs.cells.common.data.nix) substituters trusted-public-keys;
-    auto-optimise-store = true;
-
     cores = 8;
     max-jobs = 4;
 
