@@ -7,7 +7,10 @@
 }: let
   l = inputs.nixpkgs.lib // builtins;
 in
-  l.genAttrs ["nexus"] (machineName:
+  l.genAttrs [
+    "andromeda"
+    "nexus"
+  ] (machineName:
     inputs.hive.load {
       inherit cell;
 

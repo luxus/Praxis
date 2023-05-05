@@ -9,6 +9,7 @@
 in
   l.genAttrs [
     "ananke"
+    "andromeda"
     "nexus"
   ] (machineName:
     inputs.hive.load {

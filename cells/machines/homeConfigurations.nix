@@ -31,6 +31,10 @@ in
         userName = "em";
       }
       {
+        machineName = "andromeda";
+        userName = "em";
+      }
+      {
         machineName = "nexus";
         userName = "em";
       }
