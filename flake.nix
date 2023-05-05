@@ -22,7 +22,7 @@
     haumea.url = github:nix-community/haumea;
 
     hive = {
-      url = github:mklca/nix-hive/darwin-blocktype;
+      url = github:mklca/nix-hive/module-blocktypes;
       inputs = {
         haumea.follows = "haumea";
         home-manager.follows = "home-manager";
