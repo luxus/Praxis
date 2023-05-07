@@ -25,7 +25,7 @@
         "benchmark"
         "big-parallel"
         "kvm"
-        "nixos-tests"
+        "nixos-test"
       ];
     }
   ];
