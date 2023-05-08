@@ -20,6 +20,7 @@
   ];
 
   btrfsSubvolOptions = subvol: btrfsOptions ++ ["subvol=${subvol}"];
+  btrfsReadOnlySubvolOptions = subvol: ["ro"] ++ ["subvol=${subvol}"];
 in {
   _imports = [
     ({config, ...}: {
@@ -62,7 +63,7 @@ in {
     device = "/dev/mapper/main-persist";
     fsType = "btrfs";
     neededForBoot = true;
-    options = btrfsSubvolOptions "/keys/luks";
+    options = btrfsReadOnlySubvolOptions "/cryptsetup-keys";
   };
 
   "/home" = {
@@ -81,11 +82,18 @@ in {
     ];
   };
 
-  "/persist" = {
+  "/persist/state" = {
     device = "/dev/mapper/main-persist";
     fsType = "btrfs";
     neededForBoot = true;
-    options = btrfsSubvolOptions "/";
+    options = btrfsSubvolOptions "/state";
+  };
+
+  "/persist/ro-data" = {
+    device = "/dev/mapper/main-persist";
+    fsType = "btrfs";
+    neededForBoot = true;
+    options = btrfsReadOnlySubvolOptions "/ro-data";
   };
 
   "/var/log" = {
