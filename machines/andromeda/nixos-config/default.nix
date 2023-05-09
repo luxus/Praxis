@@ -46,6 +46,8 @@
   networking = {
     hostName = "andromeda";
 
+    useDHCP = false;
+
     defaultGateway = {
       address = "192.168.255.1";
       interface = "enp6s0";
