@@ -74,8 +74,6 @@
     ];
   };
 
-  security.sudo.wheelNeedsPassword = false;
-
   services = {
     avahi = {
       enable = true;

@@ -41,12 +41,20 @@
       "btrfs"
 
       "xfs"
+
+      "tpm_tis"
     ];
 
     luks.devices.crypt0 = {
       allowDiscards = true;
       device = "/dev/disk/by-partlabel/andromeda-crypt0-partition";
+      crypttabExtraOpts = [
+        "tpm2-device=/dev/tpmrm0"
+        "tpm2-pcrs=0+2+7"
+      ];
     };
+
+    systemd.enable = true;
   };
 
   kernelModules = [
