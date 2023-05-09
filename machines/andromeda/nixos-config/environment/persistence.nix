@@ -19,6 +19,8 @@
     files = [
       "/etc/nix/secrets.conf"
 
+      "/etc/secureboot/GUID"
+
       "/etc/ssh/ssh_host_ed25519_key"
       "/etc/ssh/ssh_host_ed25519_key.pub"
       "/etc/ssh/ssh_host_rsa_key"
@@ -26,7 +28,7 @@
     ];
 
     directories = [
-      "/etc/secureboot"
+      "/etc/secureboot/keys"
     ];
   };
 }
