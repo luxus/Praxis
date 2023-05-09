@@ -31,4 +31,12 @@
       "/etc/secureboot/keys"
     ];
   };
+
+  "/persist/state" = {
+    hideMounts = true;
+
+    files = [
+      "/etc/secureboot/files.db"
+    ];
+  };
 }
