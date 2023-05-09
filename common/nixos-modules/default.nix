@@ -20,7 +20,7 @@
     }
 
     ({lib, ...}: {
-      boot.loader.efi.efiSysMountPoint = lib.mkOverride 900 "/esp";
+      boot.loader.efi.efiSysMountPoint = lib.mkOverride 900 "/efi";
     })
   ];
 
