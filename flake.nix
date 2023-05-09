@@ -38,6 +38,14 @@
 
     impermanence.url = github:nix-community/impermanence;
 
+    lanzaboote = {
+      url = github:nix-community/lanzaboote;
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     nix-darwin = {
       url = github:LnL7/nix-darwin;
       inputs.nixpkgs.follows = "nixpkgs";

@@ -21,10 +21,12 @@
 
   bootspec.enable = true;
 
-  loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
+  lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot";
   };
+
+  loader.efi.canTouchEfiVariables = true;
 
   initrd = {
     kernelModules = [
