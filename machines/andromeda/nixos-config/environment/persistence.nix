@@ -17,6 +17,8 @@
     hideMounts = true;
 
     files = [
+      "/etc/machine-id"
+
       "/etc/nix/secrets.conf"
 
       "/etc/secureboot/GUID"

@@ -55,7 +55,6 @@ in {
       "defaults"
       "size=2G"
       "mode=755"
-      "strictatime"
     ];
   };
 
@@ -63,22 +62,40 @@ in {
     device = "/dev/mapper/main-persist";
     fsType = "btrfs";
     neededForBoot = true;
-    options = btrfsReadOnlySubvolOptions "/cryptsetup-keys";
+    options = [
+      "ro"
+      "relatime"
+      "ssd"
+      "discard=async"
+      "space_cache=v2"
+      "subvol=/cryptsetup-keys"
+    ];
   };
 
   "/home" = {
     device = "/dev/mapper/auxlocal-home";
     fsType = "btrfs";
-    options = btrfsOptions;
+    options = [
+      "rw"
+      "noatime"
+      "discard"
+      "space_cache=v2"
+      "subvol=/"
+    ];
   };
 
   "/nix" = {
     device = "/dev/mapper/main-nixstore";
     fsType = "xfs";
     options = [
-      "defaults"
-      "discard"
+      "rw"
       "noatime"
+      "attr2"
+      "discard"
+      "inode64"
+      "logbufs=8"
+      "logbsize=32k"
+      "noquota"
     ];
   };
 
@@ -86,20 +103,41 @@ in {
     device = "/dev/mapper/main-persist";
     fsType = "btrfs";
     neededForBoot = true;
-    options = btrfsSubvolOptions "/state";
+    options = [
+      "rw"
+      "noatime"
+      "ssd"
+      "discard=async"
+      "space_cache=v2"
+      "subvol=/state"
+    ];
   };
 
   "/persist/ro-data" = {
     device = "/dev/mapper/main-persist";
     fsType = "btrfs";
     neededForBoot = true;
-    options = btrfsReadOnlySubvolOptions "/ro-data";
+    options = [
+      "ro"
+      "relatime"
+      "ssd"
+      "discard=async"
+      "space_cache=v2"
+      "subvol=/ro-data"
+    ];
   };
 
   "/var/log" = {
     device = "/dev/mapper/main-persist";
     fsType = "btrfs";
     neededForBoot = true;
-    options = btrfsSubvolOptions "/logs";
+    options = [
+      "rw"
+      "noatime"
+      "ssd"
+      "discard=async"
+      "space_cache=v2"
+      "subvol=/logs"
+    ];
   };
 }

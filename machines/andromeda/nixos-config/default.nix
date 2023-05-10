@@ -18,9 +18,6 @@
 
     inputs.lanzaboote.nixosModules.lanzaboote
 
-    inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.nixos-hardware.nixosModules.common-pc
-
     ({lib, ...}: {
       swapDevices = [
         {
