@@ -69,6 +69,8 @@
       "8.8.4.4"
       "8.8.8.8"
     ];
+
+    nftables.enable = true;
   };
 
   system.stateVersion = "23.05";
