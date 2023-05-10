@@ -19,4 +19,6 @@
 
     ({pkgs, ...}: {hardware.firmware = [pkgs.linux-firmware];})
   ];
+
+  cpu.intel.updateMicrocode = true;
 }
