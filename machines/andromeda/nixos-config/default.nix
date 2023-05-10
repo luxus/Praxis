@@ -71,26 +71,5 @@
     ];
   };
 
-  services = {
-    avahi = {
-      enable = true;
-
-      allowInterfaces = [
-        "enp6s0"
-      ];
-
-      nssmdns = true;
-
-      publish = {
-        addresses = true;
-        enable = true;
-      };
-    };
-
-    lvm.dmeventd.enable = true;
-
-    openssh.enable = true;
-  };
-
   system.stateVersion = "23.05";
 }
