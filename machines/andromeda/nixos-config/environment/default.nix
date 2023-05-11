@@ -16,6 +16,8 @@
   _imports = [
     ({pkgs, ...}: {
       environment.systemPackages = [
+        pkgs.ethtool
+
         pkgs.sbctl
       ];
     })
