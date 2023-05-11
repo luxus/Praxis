@@ -42,36 +42,5 @@
 
   home-manager.users.em = builtins.removeAttrs cell.homeConfigurations."em@andromeda" ["bee"];
 
-  networking = {
-    hostName = "andromeda";
-
-    useDHCP = false;
-
-    defaultGateway = {
-      address = "192.168.255.1";
-      interface = "enp6s0";
-    };
-
-    interfaces = {
-      "enp6s0" = {
-        useDHCP = false;
-        ipv4.addresses = [
-          {
-            address = "192.168.255.2";
-            prefixLength = 24;
-          }
-        ];
-      };
-    };
-
-    nameservers = [
-      "1.1.1.1"
-      "8.8.4.4"
-      "8.8.8.8"
-    ];
-
-    nftables.enable = true;
-  };
-
   system.stateVersion = "23.05";
 }
