@@ -13,14 +13,12 @@
   machineData,
   ...
 }: let
-  btrfsOptions = [
-    "defaults"
-    "discard"
-    "noatime"
+  persistFilesystemOptions = [
+    "relatime"
+    "ssd"
+    "discard=async"
+    "space_cache=v2"
   ];
-
-  btrfsSubvolOptions = subvol: btrfsOptions ++ ["subvol=${subvol}"];
-  btrfsReadOnlySubvolOptions = subvol: ["ro"] ++ ["subvol=${subvol}"];
 in {
   _imports = [
     ({config, ...}: {
@@ -62,14 +60,7 @@ in {
     device = "/dev/mapper/main-persist";
     fsType = "btrfs";
     neededForBoot = true;
-    options = [
-      "ro"
-      "relatime"
-      "ssd"
-      "discard=async"
-      "space_cache=v2"
-      "subvol=/cryptsetup-keys"
-    ];
+    options = ["ro"] ++ persistFilesystemOptions ++ ["subvol=/cryptsetup-keys"];
   };
 
   "/home" = {
@@ -103,41 +94,19 @@ in {
     device = "/dev/mapper/main-persist";
     fsType = "btrfs";
     neededForBoot = true;
-    options = [
-      "rw"
-      "noatime"
-      "ssd"
-      "discard=async"
-      "space_cache=v2"
-      "subvol=/state"
-    ];
+    options = ["rw"] ++ persistFilesystemOptions ++ ["subvol=/state"];
   };
 
   "/persist/ro-data" = {
     device = "/dev/mapper/main-persist";
     fsType = "btrfs";
     neededForBoot = true;
-    options = [
-      "ro"
-      "relatime"
-      "ssd"
-      "discard=async"
-      "space_cache=v2"
-      "subvol=/ro-data"
-    ];
+    options = ["ro"] ++ persistFilesystemOptions ++ ["subvol=/ro-data"];
   };
 
   "/var/log" = {
     device = "/dev/mapper/main-persist";
     fsType = "btrfs";
-    neededForBoot = true;
-    options = [
-      "rw"
-      "noatime"
-      "ssd"
-      "discard=async"
-      "space_cache=v2"
-      "subvol=/logs"
-    ];
+    options = ["rw"] ++ persistFilesystemOptions ++ ["subvol=/logs"];
   };
 }
