@@ -64,6 +64,11 @@
     "dm_raid"
   ];
 
+  kernelParams = [
+    "intel_iommu=on"
+    "iommu=pt"
+  ];
+
   tmp = {
     tmpfsSize = "16G";
     useTmpfs = true;
