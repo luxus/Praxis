@@ -58,7 +58,7 @@
 
     nixos-hardware.url = flake:nixos-hardware;
 
-    nixpkgs.url = github:mklca/nixpkgs;
+    nixpkgs.url = flake:nixpkgs;
 
     nixvim = {
       url = github:pta2002/nixvim;
