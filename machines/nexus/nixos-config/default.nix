@@ -100,7 +100,7 @@
       "kvm-intel"
     ];
 
-    kernelPackages = inputs.nixpkgs.linuxPackages_6_2;
+    kernelPackages = inputs.nixpkgs.linuxPackages_6_3;
   };
 
   fonts.fonts = [
